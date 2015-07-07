@@ -1,4 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+	Cookie name = new Cookie("name", request.getParameter("name"));
+	response.addCookie(name);
+%>
+
 <html>
 <head>
 	<title>WsChat</title>
@@ -15,10 +21,11 @@
 				$('#response').append(e.data).append('<br/>');
 			}
 		});
-
 	</script>
 </head>
 <body>
+
+<h1>Hello <%= request.getParameter("name") %></h1>
 
 <input type="text" id="data">
 <button id="send">Send</button>

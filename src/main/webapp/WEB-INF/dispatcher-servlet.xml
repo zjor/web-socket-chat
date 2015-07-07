@@ -21,6 +21,9 @@
 
     <websocket:handlers>
         <websocket:mapping path="/wsHandler" handler="wsHandler"/>
+        <websocket:handshake-interceptors>
+            <bean class="edu.springlabs.websocket.CookiesHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
     </websocket:handlers>
 
     <bean id="wsHandler" class="edu.springlabs.websocket.WsHandler"/>

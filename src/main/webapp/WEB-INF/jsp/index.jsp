@@ -14,11 +14,18 @@
 			var ws = new WebSocket("ws://localhost:7001/websocket/wsHandler");
 			ws.onopen = function(e) {
 				$('#send').click(function() {
-					ws.send($('#data').val());
+					var req = {
+						"command": "message",
+						"data": {
+							"text": $('#data').val()
+						}
+					};
+					ws.send(JSON.stringify(req));
 				});
 			};
 			ws.onmessage = function(e) {
-				$('#response').append(e.data).append('<br/>');
+				console.log(e.data);
+				$('#response').append(JSON.parse(e.data).text).append('<br/>');
 			}
 		});
 	</script>
